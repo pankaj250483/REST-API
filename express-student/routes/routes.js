@@ -6,7 +6,14 @@ const router = express.Router();
 router.post('/post', async (req, res) => {
     const data = new Model({
         name: req.body.name,
-        age: req.body.age
+        rollno: req.body.rollno,
+        hindi: req.body.hindi,
+        english: req.body.english,
+        math: req.body.math,
+        total: req.body.total,
+        percentage: req.body.percentage,
+        result: req.body.result,
+        grade: req.body.grade
     })
 
     try {

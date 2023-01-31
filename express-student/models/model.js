@@ -5,10 +5,17 @@ const dataSchema = new mongoose.Schema({
         required: true,
         type: String
     },
-    age: {
+    rollno: {
         required: true,
         type: Number
-    }
+    },
+   hindi: Number,
+   english: Number,
+   math: Number,
+   total: Number,
+   percentage: Number,
+   result: String,
+   grade: String
 })
 
-module.exports = mongoose.model('bata', dataSchema)
+module.exports = mongoose.model('student', dataSchema)
