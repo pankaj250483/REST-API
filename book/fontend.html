@@ -1,0 +1,57 @@
+<style>
+#ibsn
+{
+    margin-bottom: 15px;
+}
+.custom-button
+{
+    padding: 20px;
+    margin: 15px;
+}
+
+</style>
+
+<input type=text id="ibsn" placeholder="enter ISBN Number....">
+<button type="button" class="custom-button" onclick="pankaj()">Get Price</button>
+<div id="demo"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+
+function pankaj()
+{
+            bid=ibsn.value;
+            apiurl=`https://www.pankajcomputers.com/test2/tmp.php?id=${bid}`;
+
+             $.ajax
+              ({
+              type:'get',
+              url: apiurl,
+              mode:'no-cors',
+              success:function(response) 
+              {
+              res=JSON.parse(response);
+              demo.innerHTML="<h1>Average Price : "+res.result.text.Average;
+              demo.innerHTML+="<br>Good Book Price : "+res.result.text.Good;
+              demo.innerHTML+="<br>New Book Price : "+res.result.text.New;
+              demo.innerHTML+="</h1>";
+                  
+              }
+              });
+    
+}
+function direct()
+{
+            $.ajax
+              ({
+              type:'get',
+              url:'https://booksrun.com/api/price/sell/0134093410?key=kxd0vzaik5f8jnsngzbn',
+              mode:'no-cors',
+              crossDomain: true,
+    dataType: 'jsonp',
+              success:function(response) 
+              {
+              demo.innerHTML=response;
+              }
+              });   
+}
+</script>
