@@ -17,30 +17,31 @@
     </style>
     
     <input type=text id="ibsn" placeholder="enter ISBN Number....">
-    <button type="button" class="custom-button" onclick="pankaj()">Get Price</button>
+    <button type="button" class="custom-button" onclick="price()">Get Price</button>
     <div id="demo"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script>
     
-    function pankaj()
+    function price()
     {
-                bid=ibsn.value;
-                apiurl=`https://www.pankajcomputers.com/test2/tmp.php?id=${bid}`;
-    
-                 $.ajax
-                  ({
-                  type:'get',
-                  url: apiurl,
-                  mode:'no-cors',
-                  success:function(response) 
-                  {
-                  res=JSON.parse(response);
-                  demo.innerHTML=`Average Price : ${res.result.text.Average}<br>`;
-                  demo.innerHTML+=`Good Price : ${res.result.text.Good}<br>`;
-                  demo.innerHTML+=`New Price : ${res.result.text.New}`;
-                      
-                  }
-                  });
+        bid=ibsn.value;
+        uid=`https://booksrun.com/api/price/sell/${bid}?key=kxd0vzaik5f8jnsngzbn`;
+        apiurl=`https://www.pankajcomputers.com/test2/api/get.php?url=${uid}`;
+
+        $.ajax
+        ({
+        type:'get',
+        url: apiurl,
+        mode:'no-cors',
+        success:function(response) 
+        {
+        res=JSON.parse(response);
+        demo.innerHTML=`Average Price : ${res.result.text.Average}<br>`;
+        demo.innerHTML+=`Good Price : ${res.result.text.Good}<br>`;
+        demo.innerHTML+=`New Price : ${res.result.text.New}`;
+            
+        }
+        });
         
     }
     function direct()
