@@ -1,8 +1,8 @@
 <?php
-$id=$_GET["id"];
+$url=$_GET["url"];
 $curl = curl_init();
 curl_setopt_array($curl, array(
-  CURLOPT_URL => 'https://booksrun.com/api/price/sell/'.$id.'?key=kxd0vzaik5f8jnsngzbn',
+  CURLOPT_URL => $url,
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,

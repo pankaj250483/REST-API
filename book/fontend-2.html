@@ -1,0 +1,104 @@
+<style>
+#ibsn
+{
+    margin-bottom: 15px;
+}
+.custom-button
+{
+    padding: 20px;
+    margin: 15px;
+}
+
+#demo
+{
+    font-size: 20px;
+    line-heigh: 2.0;
+}
+
+</style>
+
+<input type=text id="ibsn" placeholder="enter ISBN Number....">
+<button type="button" class="custom-button" onclick="price()">Get Price</button>
+<button type="button" class="custom-button" onclick="sell()">Sell</button>
+<button type="button" class="custom-button" onclick="buy()">Buy/Rent</button>
+
+
+<div id="demo"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+
+function price()
+{
+    bid=ibsn.value;
+    uid=`https://booksrun.com/api/price/sell/${bid}?key=kxd0vzaik5f8jnsngzbn`;
+    apiurl=`https://www.pankajcomputers.com/test2/api/get.php?url=${uid}`;
+
+     $.ajax
+      ({
+      type:'get',
+      url: apiurl,
+      mode:'no-cors',
+      success:function(response) 
+      {
+      res=JSON.parse(response);
+      demo.innerHTML=`Average Price : ${res.result.text.Average}<br>`;
+      demo.innerHTML+=`Good Price : ${res.result.text.Good}<br>`;
+      demo.innerHTML+=`New Price : ${res.result.text.New}`;
+          
+      }
+      });
+    
+}
+
+function buy()
+{
+    bid=ibsn.value;
+    uid=`https://booksrun.com/api/price/buy/${bid}?key=kxd0vzaik5f8jnsngzbn`;
+    apiurl=`https://www.pankajcomputers.com/test2/api/get.php?url=${uid}`;
+
+     $.ajax
+      ({
+      type:'get',
+      url: apiurl,
+      mode:'no-cors',
+      success:function(response) 
+      {
+         demo.innerHTML=response;
+/*          
+      res=JSON.parse(response);
+      demo.innerHTML=`Average Price : ${res.result.text.Average}<br>`;
+      demo.innerHTML+=`Good Price : ${res.result.text.Good}<br>`;
+      demo.innerHTML+=`New Price : ${res.result.text.New}`;
+ */         
+      }
+      });
+    
+}
+
+function sell()
+{
+    bid=ibsn.value;
+    uid=`https://booksrun.com/api/price/sell/${bid}?key=kxd0vzaik5f8jnsngzbn`;
+    apiurl=`https://www.pankajcomputers.com/test2/api/get.php?url=${uid}`;
+
+     $.ajax
+      ({
+      type:'get',
+      url: apiurl,
+      mode:'no-cors',
+      success:function(response) 
+      {
+           demo.innerHTML=response;
+           /*
+      res=JSON.parse(response);
+      demo.innerHTML=`Average Price : ${res.result.text.Average}<br>`;
+      demo.innerHTML+=`Good Price : ${res.result.text.Good}<br>`;
+      demo.innerHTML+=`New Price : ${res.result.text.New}`;
+          */
+      }
+      });
+    
+}
+
+
+</script>
